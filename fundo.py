@@ -13,7 +13,7 @@ angulo = 0
 
 
 relogio = pygame.time.Clock()
-FPS = 25
+FPS = 45
 
 screen = pygame.display.set_mode((sizeY, sizeX))
 
@@ -39,12 +39,23 @@ while running:
     
     pos_inix += mov_x
     pos_iniy += mov_y
+
+    if pos_iniy < 0:
+        pos_iniy = 600
+    elif pos_iniy > 600:
+        pos_iniy = 0
+    if pos_inix < 0:
+        pos_inix = 800
+    elif pos_inix > 800:
+        pos_inix = 0
+
     screen.blit(cobra_rotacionada, (pos_inix,pos_iniy))
-    print(f"{mov_x}{mov_y}")
+    
         
     pygame.display.flip()
 
     relogio.tick(FPS)
+
 
 
 pygame.quit()
